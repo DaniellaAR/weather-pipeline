@@ -23,5 +23,27 @@ ETL pipeline for processing weather observations with wind speed analysis, built
 git clone https://github.com/DaniellaAR/weather-pipeline.git
 cd weather-pipeline
 
+#set up enviroment 
+python3 -m venv venv
+source venv/bin/activate
+
 # Install dependencies
 pip install -r requirements.txt
+```
+
+# Install dependencies
+Create .env file, replacing with the data that will be share in the email
+```bash
+user=
+password=
+host=
+port=
+dbname=
+```
+
+# Pipeline structure
+
+
+
+
+
