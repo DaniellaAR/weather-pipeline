@@ -43,8 +43,6 @@ dbname=
 
 # Pipeline structure
 
-
-##Overview
 This automated pipeline processes weather observation data through three distinct environments, implementing incremental updates and analytical calculations. The workflow executes every 6 hours via GitHub Actions.
 
 # Weather Data Processing Pipeline
