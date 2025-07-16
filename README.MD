@@ -8,7 +8,7 @@ ETL pipeline for processing weather observations with wind speed analysis, built
 - [Configuration](#-configuration)
 - [Pipeline Structure](#-pipeline-structure)
 - [Usage](#-usage)
-- [Technical Implementation] (#-Technical)
+- [Technical Implementation](#-Technical)
 
 ## Features
 - API data extraction
