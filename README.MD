@@ -8,7 +8,7 @@ ETL pipeline for processing weather observations with wind speed analysis, built
 - [Configuration](#-configuration)
 - [Pipeline Structure](#-pipeline-structure)
 - [Usage](#-usage)
-- [Data Model](#-data-model)
+- [yaml](#-yaml)
 
 ## Features
 - API data extraction
@@ -43,19 +43,38 @@ dbname=
 
 # Pipeline structure
 
-it get all the observation for one station 
-if there is no data in stg_weather_observations then it will filter and load the last 7 days, otherwise will only update the most recent on 
 
-in the second part with sql code will create 3 columns, this is to do get the differences vs the previus one using LAG() functions 
-and then this is sabe in a new table, prod_weather_observations
+##Overview
+This automated pipeline processes weather observation data through three distinct environments, implementing incremental updates and analytical calculations. The workflow executes every 6 hours via GitHub Actions.
 
-result code will show the queries done under the prod_weather_observations table. 
+# Weather Data Processing Pipeline
 
-This approach was taking to have in consideration that it should be 3 enviroments, raw, stagging and production, 
-raw: data as it is 
-stagging: modify data, in this case was to create the columns, so the analysis will be easy to be done. 
-prod: this enviroment it is for the analysis, that it will have the most clean and updated data possible. 
+## Overview
+This automated pipeline processes weather observation data through a three-stage workflow, implementing incremental updates and analytical calculations. The system executes every 6 hours via GitHub Actions.
 
+## Pipeline Architecture
+
+### Data Environments
+
+| Environment        | Table Name                   | Purpose                                                                 |
+|--------------------|------------------------------|-------------------------------------------------------------------------|
+| **Raw**           | (External Source)            | Contains source data in original format from weather APIs               |
+| **Staging**       | `stg_weather_observations`   | Stores cleansed, deduplicated observation records                       |
+| **Production**    | `prod_weather_observations`  | Contains analysis-ready data with calculated metrics                    |
+
+## Workflow Logic
+
+### Incremental Data Loading
+The pipeline implements smart data collection:
+
+```python
+# Gets last observation or defaults to 7 days ago
+last_date = get_last_observation_date()
+start_date = last_date if last_date else datetime.now() - timedelta(days=7)
+
+
+
+#YAML file 
 
 
 
