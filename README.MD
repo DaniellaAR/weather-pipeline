@@ -2,6 +2,10 @@
 
 ETL pipeline for processing weather observations with wind speed analysis, built with Python and Supabase.
 
+Asumptions
+- For the last week filter, If last week is not complete it will take the first day and the last sunday. 
+
+
 ## Table of Contents
 - [Features](#-features)
 - [Installation](#-installation)
