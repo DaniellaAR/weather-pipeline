@@ -65,17 +65,20 @@ This automated pipeline processes weather observation data through a three-stage
 ## Workflow Logic
 
 ### Incremental Data Loading
-The pipeline implements smart data collection:
+Behavior:
 
-```python
-# Gets last observation or defaults to 7 days ago
-last_date = get_last_observation_date()
-start_date = last_date if last_date else datetime.now() - timedelta(days=7)
+✅ Initial Load: 7 days of historical data when staging is empty
+
+✅ Incremental Update: Only new records since last observation
+
+✅ Deduplication: ON CONFLICT clause prevents duplicate entriesme.now() - timedelta(days=7)
 
 
+#Technical Implementation
 
-#YAML file 
-
+Execution Schedule with the YAML file
+- Automated: Runs every 6 hours (0 */6 * * * cron syntax)
+- Manual: Triggerable via GitHub UI
 
 
 
