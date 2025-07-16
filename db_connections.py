@@ -20,7 +20,12 @@ def get_db_connection():
             password=PASSWORD,
             host=HOST,
             port=PORT,
-            dbname=DBNAME
+            dbname=DBNAME,
+            connect_timeout=10,
+            keepalives=1,
+            keepalives_idle=30,
+            keepalives_interval=10,
+            keepalives_count=5
         )
         return conn
     except Exception as e:

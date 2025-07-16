@@ -61,20 +61,19 @@ def load_data_enh(transform_data):
                     
             except KeyError as e:
                 print(f"Missing field {str(e)} in record {data.get('id', 'unknown')}")
-                continue
+                break 
+            
             except Exception as e:
                 print(f"Error inserting record {data.get('id', 'unknown')}: {str(e)}")
-                continue
+                return True
  
-        conn.commit()
+        conn.commit()  # Commit after each insert!
+        cursor.close()
+        conn.close()
         print(f"\n   Successfully loaded records into prod_weather_table")
         return True
 
     except Exception as e:
-        print(f"Database connection error: {str(e)}")
-        conn.close()
-        return True
-        
-    finally:
+        print(f"Error inserting {data[0]}: {e}")
         if conn:
             conn.close()
