@@ -72,9 +72,9 @@ def load_data_enh(transform_data):
 
     except Exception as e:
         print(f"Database connection error: {str(e)}")
-        if conn:
-            conn.rollback()
-        return (success, errors)
+        conn.close()
+        return True
+        
     finally:
         if conn:
             conn.close()

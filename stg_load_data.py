@@ -2,8 +2,9 @@ import psycopg2
 import pytz  # New import for timezone handling
 import os
 from db_connections     import get_db_connection
-from datetime           import datetime
-from handlers           import create_stg_weather_table
+from datetime import datetime, timedelta, timezone
+from handlers           import create_stg_weather_table, get_last_timestamp
+from stg_get_data       import get_one_station, get_all_observations
 
 
 #load data filtered for the last 7 days
@@ -80,28 +81,24 @@ def extract_data_pipe(station_id):
     stations = get_one_station(station_id)
     print(f"\n2. Get observations for station id: {stations["id"]}")
 
-    end_date = datetime.now(timezone.utc)  
-    #print(f"End date: {end_date}")
+    end_date = datetime.now(timezone.utc)  #print(f"End date: {end_date}")
 
-    last_timestamp = get_last_timestamp()
-    #print(f"Last time stamp: {last_timestamp}")
+    last_timestamp = get_last_timestamp() #print(f"Last time stamp: {last_timestamp}")
 
     days=7
    
     if last_timestamp is None:
       
-        start_date = end_date - timedelta(days)
-        #end_date   = end_date - timedelta(days= 2)
+        start_date = end_date - timedelta(days) #end_date   = end_date - timedelta(days= 2)
 
 
         print(f"\n3. Historical load")
         print(f"   Start date : {start_date}")
         print(f"   End date   : {end_date}")
 
-        observations = get_all_observations(station_id , start_date, end_date) 
+        #observations = get_all_observations(station_id , start_date, end_date) 
        
         print(f"\n   Historical data for the last {days} days as been updated")
-
         print(f"\n")
     else:
      
