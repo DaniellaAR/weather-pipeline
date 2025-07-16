@@ -71,13 +71,13 @@ Behavior:
 
 ✅ Deduplication: ON CONFLICT clause prevents duplicate entriesme.now() - timedelta(days=7)
 
-#Usage 
+# Usage 
 ```bash
 Pythn main.py
 
 ```
 
-#Technical Implementation
+# Technical Implementation
 
 Execution Schedule with the YAML file
 - Automated: Runs every 6 hours (0 */6 * * * cron syntax)
