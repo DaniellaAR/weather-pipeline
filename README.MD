@@ -8,7 +8,7 @@ ETL pipeline for processing weather observations with wind speed analysis, built
 - [Configuration](#-configuration)
 - [Pipeline Structure](#-pipeline-structure)
 - [Usage](#-usage)
-- [yaml](#-yaml)
+- Technical Implementation(#-Technical)
 
 ## Features
 - API data extraction
@@ -73,6 +73,11 @@ Behavior:
 
 ✅ Deduplication: ON CONFLICT clause prevents duplicate entriesme.now() - timedelta(days=7)
 
+#Usage 
+```bash
+Pythn main.py
+
+```
 
 #Technical Implementation
 
@@ -80,10 +85,7 @@ Execution Schedule with the YAML file
 - Automated: Runs every 6 hours (0 */6 * * * cron syntax)
 - Manual: Triggerable via GitHub UI
 
-
-
-
-
+#
 
 
 
