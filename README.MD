@@ -1,20 +1,27 @@
 # Weather Data Pipeline
 
-A Python ETL pipeline that processes weather observations, analyzes wind speed variations, and loads data to Supabase.
+ETL pipeline for processing weather observations with wind speed analysis, built with Python and Supabase.
+
+## Table of Contents
+- [Features](#-features)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Pipeline Structure](#-pipeline-structure)
+- [Usage](#-usage)
+- [Data Model](#-data-model)
 
 ## Features
-- Extracts weather data from API sources
-- Filters last 7 days of observations
-- Performs incremental loads
-- Calculates wind speed variations
-- Stores data in Supabase (PostgreSQL)
+- API data extraction
+- 7-day rolling window processing
+- Wind speed differential analysis
+- Supabase PostgreSQL integration
+- Incremental loading
 
-## Dependencies
-```python
-# Core Imports
-import psycopg2
-from supabase import create_client
-from datetime import datetime, timedelta
-import pytz
-import os
-from dotenv import load_dotenv
+##  Installation
+```bash
+# Clone repository
+git clone https://github.com/DaniellaAR/weather-pipeline.git
+cd weather-pipeline
+
+# Install dependencies
+pip install -r requirements.txt
